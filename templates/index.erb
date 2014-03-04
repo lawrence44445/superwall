@@ -2,9 +2,11 @@
 
 <div id="post-form">
   <form action="/posts" method="post">
-    <div>
-      <textarea name="body"></textarea>
+    <div class="container">     
+      <input type="text" name="url" placeholder="Image URL {optional}">
     </div>
+    <div class="container">
+      <textarea name="body" placeholder="Some totally sweet post"></textarea>
     <div>
       <input type="submit" value="Post">
     </div>
@@ -17,8 +19,11 @@
            for information about how this strftime voodoo works -->
       <p><%= post.created_at.strftime('%A, %B %-d, %Y') %></p>
       <!-- What does "escape" do here?  What happens if you remove it? -->
-      <!-- Try creating a post that contains HTML and see how that post looks
+      <!-- Try creating a post that contains HTML  and see how that post looks
            with and without the call to escape() -->
+      <% if post.url.length > 0 %>
+        <img src="<%= post.url %>">
+      <% end %>
       <p><%= escape(post.body) %></p>
     </li>
   <% end %>

@@ -7,11 +7,12 @@ set :app_file, __FILE__
 
 get '/' do
   posts = Post.reverse_order(:created_at).all
-  erb :index, :locals => {:posts => posts}
+  erb :index, :locals => {:posts => posts} 
+  
 end
 
 post '/posts' do
-  Post.create(:body => params[:body])
+  Post.create(:body => params[:body],:url=>params[:url])
   redirect to('/')
 end
 

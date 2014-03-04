@@ -3,6 +3,7 @@ if Sinatra::Application.development?
     DB.create_table :posts do
       primary_key :id
       text :body, :null => false
+      string :url
       datetime :created_at, :null => false
       datetime :updated_at, :null => false
     end
